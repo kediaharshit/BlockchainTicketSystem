@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Blockchain based Ticketing platform</title>
+
+    <!-- Bootstrap -->
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+      main {
+        margin-top: 60px;
+      }
+
+      #content {
+        display: none;
+      }
+
+      form {
+        width: 350px;
+        margin-bottom: 10px;
+      }
+
+      ul {
+        margin-bottom: 10px;
+      }
+      li.menu-item {
+   margin:0 0 10px 0;   
+}
+
+      #completedTaskList .content {
+        color: grey;
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href = "#">IIT Madras Ticketing System</a>
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap d-none d-sm-none d-sm-block">
+          <small><a class="nav-link" href="#"><span id="account"></span></a></small>
+        </li>
+      </ul>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <main role="main" class="col-lg-12 d-flex justify-content-center">
+          <div id="loader" class="text-center">
+            <p class="text-center">Loading...</p>
+          </div>
+          <div id="content">
+         <!-- <form onSubmit="App.createTask(); return false;">
+              <input id="newTask" type="text" class="form-control" placeholder="Add task..." required>
+              <input type="submit" hidden="">
+            </form> -->
+            <div class = "text-center">
+            <form onSubmit="App.sellTransfer(); return false;">
+                <input id="newTask" type="text" class="form-control" placeholder="Transfer to" required>
+                <input id="ticketid_transfer" type="number" style = "margin-top:5px" class="form-control" placeholder="Ticket ID" required>
+                <div class = "text-center">
+                <button class ="btn btn-primary" style = "margin-top:10px"type="submit">Transfer!</button>
+              </div>
+            </form>
+          </div>
+          <br>
+
+          <div class = "text-center">
+            <form onSubmit="App.buyTicket(); return false;">
+              <button class="btn btn-secondary" type="submit">Buy Ticket!</button>
+            </form>
+          </div>
+          <br>
+
+          <div class = "text-center">
+            <form onSubmit="App.sellTicket(); return false;">
+              <input id="ticketid_redeem" type="number" class="form-control" placeholder="Ticket ID" required>
+              <button class="btn btn-warning" style = "margin-top:10px" type="submit">Sell Ticket to public!</button>
+            </form>
+          </div>
+          <br>
+          <br>
+          
+            
+            <!-- <ul id="redeemList" class="list-unstyled">
+              <h7>Redeemable tickets</h7>
+              <div class="redeemTemplate" style="display: none">
+                <label>
+                  
+                  <span class="content">Task content goes here...</span>
+                
+                  <button class="gg" onclick="App.acceptTicket(); return false">Accept ticket</button>
+                </label>
+              </div>
+            </ul> -->
+            <ul id="completedTaskList" class="list-unstyled">
+            </ul>
+          </div>
+        
+        </main>
+
+      </div>
+      <div class="row">
+      
+        <div class="col-sm-4">
+        <ul id="ticketList" style="list-style-type:none;">
+          <h7>My tickets</h7>
+        </ul>
+        </div>
+
+        <div class="col-sm-4">
+          <ul id="transferList" style="list-style-type:none;">
+            <h7>Tickets up for transfer</h7>
+          </ul>
+        </div>  
+
+        <div class="col-sm-4">
+        <ul id="redeemList" style="list-style-type:none;">
+          <h7>Redeemable tickets</h7>
+        </ul>
+        </div>  
+      </div>
+      
+    </div>
+    
+      
+    
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="vendor/truffle-contract/dist/truffle-contract.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

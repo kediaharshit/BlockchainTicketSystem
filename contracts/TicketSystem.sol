@@ -23,11 +23,9 @@ contract TicketSystem {
     function redeem_to_pool(address payable owner_id, uint256 ticket_id) external
     {
         //buyer_id.transfer(1 ether);
-        if (
-            tickets[ticket_id].owner_id == owner_id &&
-            keccak256(bytes(tickets[ticket_id].ticket_state)) ==
-            keccak256(bytes("unavailable"))
-        ) {
+        if (tickets[ticket_id].owner_id == owner_id &&
+            keccak256(bytes(tickets[ticket_id].ticket_state)) == keccak256(bytes("unavailable"))) 
+        {
             tickets[ticket_id].ticket_state = "available";
             tickets[ticket_id].sell_to = null_addr;
         }
@@ -93,15 +91,13 @@ contract TicketSystem {
         return string(bstr);
     }
 
-    function invest() external payable {}
+    // function invest() external payable {}
 
     // Sell_to -> A ticket owner can sell his ticket to a some guy with a particular address
     function sell_to(address payable addr, uint256 ticket_id) public {
-        if (
-            tickets[ticket_id].owner_id == msg.sender &&
-            keccak256(bytes(tickets[ticket_id].ticket_state)) ==
-            keccak256(bytes("unavailable"))
-        ) {
+        if (tickets[ticket_id].owner_id == msg.sender &&
+            keccak256(bytes(tickets[ticket_id].ticket_state)) == keccak256(bytes("unavailable"))) 
+        {
             tickets[ticket_id].sell_to = addr;
             tickets[ticket_id].ticket_state = "up_for_transfer";
         }

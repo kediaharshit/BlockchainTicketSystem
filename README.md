@@ -1,9 +1,9 @@
 ## CS6666: Course Project ###
 ##### Authors: ##### 
 ```
-Harshit Kedia;
-Suhas Pai;
-Arav Anil Mhaske;
-Vamshi KV;
-Samuel J;
+Suhas Pai
+Arav Anil Mhaske
+Harshit Kedia
+Vamshi KV
+Samuel J
 ```

@@ -8,6 +8,8 @@ App = {
       await App.loadContract()
       await App.render()
     },
+    
+    // https://medium.com/metamask/https-medium-com-metamask-breaking-change-injecting-web3-7722797916a8
   
     loadWeb3: async () => {
       if (typeof web3 !== 'undefined') {
@@ -54,7 +56,7 @@ App = {
       // Hydrate the smart contract with values from the blockchain
       App.tickets  = await App.contracts.TicketSystem.deployed()
 
-      console.log(App.contracts.TicketSystem.address)
+      // console.log(App.contracts.TicketSystem.address)
     },
   
     render: async () => {
@@ -65,13 +67,9 @@ App = {
   
       // Update app loading state
       App.setLoading(true)
-  
       // Render Account
       $('#account').html(App.account)
-  
-      // Render Tasks
       await App.renderTasks()
-  
       // Update loading state
       App.setLoading(false)
     },
@@ -80,13 +78,13 @@ App = {
       // Load the total task count from the blockchain
       const ticketCount = await App.tickets.tot_tickets()
       const gg = await App.tickets.balanceOf()
-      console.log(ticketCount)
-      console.log(gg)
-      for(var i=0;i<5;i++)
-      {
-    	  const latest_tick = await App.tickets.tickets(i)
-		    console.log(latest_tick)
-      }
+      // console.log(ticketCount)
+      // console.log(gg)
+      // for(var i=0;i<5;i++)
+      // {
+    	//   const latest_tick = await App.tickets.tickets(i)
+		  //   console.log(latest_tick)
+      // }
       const $taskTemplate = $('.taskTemplate')
       var ul1 = document.getElementById("ticketList");
       for(var i = 0;i<ticketCount;i++)
@@ -104,7 +102,6 @@ App = {
           ul1.appendChild(li);
           
         }
-        
       }
       var ul2 = document.getElementById("transferList");
       for(var i = 0;i<ticketCount;i++)
@@ -131,10 +128,8 @@ App = {
           button.setAttribute("style","margin-top:5px")
           button.setAttribute("onclick",`App.withdrawTransfer(${i})`)
           li.appendChild(button);
-          ul2.appendChild(li);
-          
-        }
-        
+          ul2.appendChild(li); 
+        }  
       }
       var ul = document.getElementById("redeemList");
       
@@ -174,7 +169,7 @@ App = {
 	sellTicket : async () => {
     App.setLoading(true)
     const TransferID = $('#ticketid_redeem').val()
-    console.log(TransferID)
+    // console.log(TransferID)
 		await App.tickets.redeem_to_pool(App.account, TransferID)
 		window.location.reload()
   },
@@ -183,8 +178,8 @@ App = {
     const TransferAddr = $('#newTask').val()
     const TransferID = $('#ticketid_transfer').val()
     
-    console.log(TransferAddr)
-    console.log(TransferID)
+    // console.log(TransferAddr)
+    // console.log(TransferID)
     await App.tickets.sell_to(TransferAddr,TransferID)
     window.location.reload()
 
@@ -192,7 +187,7 @@ App = {
   acceptTicket : async (ticket_id) => {
   App.setLoading(true)
  
-    console.log(ticket_id)
+    // console.log(ticket_id)
     await App.tickets.acceptTicket(ticket_id,
       {
         from: App.account,
